@@ -59,164 +59,164 @@ public class AppProductController {
             }
         }
         productForm.setOffset(offset);
-        List<String> search_keys = Arrays.asList(productForm.getKeyword().split(","));
-        List<String> newsearch_key = new ArrayList<>();
         if (productForm.getKeyword() != null) {
-
+            List<String> search_keys = Arrays.asList(productForm.getKeyword().split(","));
+            List<String> newsearch_key = new ArrayList<>();
             for (String search_key : search_keys) {
                 String newsearchKey = escapeService.getSearchKeyByKeyword(search_key);
                 if (!StringTools.isNullOrEmpty(newsearchKey)) {
                     newsearch_key.add(newsearchKey);
                 }
             }
+            if (newsearch_key != null && newsearch_key.isEmpty()) {
+                productForm.setSearch_keys(newsearch_key);
+            } else {
+                productForm.setSearch_keys(search_keys);
+            }
         }
-        if (newsearch_key != null && newsearch_key.isEmpty()) {
-            productForm.setSearch_keys(newsearch_key);
-        } else {
-            productForm.setSearch_keys(search_keys);
-        }
-
-        List<EquipmentEntity> equipmentEntities = equipmentService.maoQueryList(productForm);
-        if (productForm.getArticleNumbers() == null && equipmentEntities != null && !equipmentEntities.isEmpty()) {
-            List<String> arts = screenService.getArticleNumbers();
-            if (arts != null && arts.isEmpty()) {
-                Iterator<EquipmentEntity> iterator = equipmentEntities.iterator();
-                while (iterator.hasNext()) {
-                    if (arts.contains(iterator.next().getArticleNumber())) {
-                        iterator.remove();
+            List<EquipmentEntity> equipmentEntities = equipmentService.maoQueryList(productForm);
+            if (productForm.getArticleNumbers() == null && equipmentEntities != null && !equipmentEntities.isEmpty()) {
+                List<String> arts = screenService.getArticleNumbers();
+                if (arts != null && arts.isEmpty()) {
+                    Iterator<EquipmentEntity> iterator = equipmentEntities.iterator();
+                    while (iterator.hasNext()) {
+                        if (arts.contains(iterator.next().getArticleNumber())) {
+                            iterator.remove();
+                        }
                     }
                 }
             }
+            return BaseResp.ok(equipmentEntities);
         }
-        return BaseResp.ok(equipmentEntities);
-    }
 
 
-    @PostMapping("/list")
-    @ResponseBody
-    public BaseResp list(@RequestBody ProductForm productForm, HttpServletRequest request) {
-        //获得token,校验token正确性
+
+
+        @PostMapping("/list")
+        @ResponseBody
+        public BaseResp list (@RequestBody ProductForm productForm, HttpServletRequest request){
+            //获得token,校验token正确性
 //        if (null == request.getHeader("token") || null == JWTUtil.getCurrentUserOpenId(request)) {
 //            log.warn("首页商品列表接口token校验失败，缺少token参数");
 //            return BaseResp.error(-3, "token invalid.");
 //        }
-        //入参对象articleNumbers属性校验，articleNumbers数据类型是list
-        if (null != productForm.getArticleNumbers() && productForm.getArticleNumbers().isEmpty()) {
-            productForm.setArticleNumbers(null);
-            log.error("articleNumbers为空,可能存在导航数据问题");
-        }
+            //入参对象articleNumbers属性校验，articleNumbers数据类型是list
+            if (null != productForm.getArticleNumbers() && productForm.getArticleNumbers().isEmpty()) {
+                productForm.setArticleNumbers(null);
+                log.error("articleNumbers为空,可能存在导航数据问题");
+            }
 
-        if (productForm.getPageIndex() == null) {        //入参对象pageIndex属性校验
-            productForm.setPageIndex(1);
-        }
-        if (productForm.getPageSize() == null) {         //入参对象pageSize属性校验
-            productForm.setPageSize(10);
-        }
+            if (productForm.getPageIndex() == null) {        //入参对象pageIndex属性校验
+                productForm.setPageIndex(1);
+            }
+            if (productForm.getPageSize() == null) {         //入参对象pageSize属性校验
+                productForm.setPageSize(10);
+            }
 
-        try {
-            if (!StringUtils.isBlank(productForm.getKeyword())) {
-                String search_key = productForm.getKeyword();
-                List<String> search_keys = Arrays.asList(search_key.split(" "));     //字符串通过split拆解后通过Arrays.asList方法转换成list
-                List<String> newsearchkeylist = new ArrayList<>();
-                for (String key : search_keys) {
-                    //开始进行搜索关键字转换
-                    if (null != escapeService.getSearchKeyByKeyword(key)) {
-                        String searchkey = escapeService.getSearchKeyByKeyword(key);
-                        log.warn("将原搜索关键字: " + key + "转换为: " + searchkey);
-                        List<String> searchkeylist = Arrays.asList(searchkey.split(" "));
-                        for (String newsearchkey : searchkeylist) {
-                            newsearchkeylist.add(newsearchkey);
+            try {
+                if (!StringUtils.isBlank(productForm.getKeyword())) {
+                    String search_key = productForm.getKeyword();
+                    List<String> search_keys = Arrays.asList(search_key.split(" "));     //字符串通过split拆解后通过Arrays.asList方法转换成list
+                    List<String> newsearchkeylist = new ArrayList<>();
+                    for (String key : search_keys) {
+                        //开始进行搜索关键字转换
+                        if (null != escapeService.getSearchKeyByKeyword(key)) {
+                            String searchkey = escapeService.getSearchKeyByKeyword(key);
+                            log.warn("将原搜索关键字: " + key + "转换为: " + searchkey);
+                            List<String> searchkeylist = Arrays.asList(searchkey.split(" "));
+                            for (String newsearchkey : searchkeylist) {
+                                newsearchkeylist.add(newsearchkey);
+                            }
+                        }
+                    }
+                    if (newsearchkeylist.isEmpty() || newsearchkeylist.size() < 1) {
+                        productForm.setSearch_keys(search_keys);
+                    } else {
+                        productForm.setSearch_keys(newsearchkeylist);
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                log.error("首页商品列表接口转换搜索关键字异常，异常信息为： " + e.getMessage());
+            } finally {
+
+                String open_id = JWTUtil.getCurrentUserOpenId(request);
+                String userinfo = "  --用户open_id: " + open_id + "--  ";
+                if (!StringUtils.isBlank(productForm.getKeyword())) {
+                    log.warn(userinfo + "查询关键字为: " + productForm.getSearch_keys());
+
+                }
+                log.warn(userinfo + "首页商品列表接口入参：" + productForm.toString());
+                String user_level = null;
+                Integer total = 0;
+                if (null != equipmentService.queryListTotal(productForm)) {
+                    total = equipmentService.queryListTotal(productForm);
+                }
+                //防止前端传过来的页码超出索引
+                if ((productForm.getPageIndex() - 1) * productForm.getPageSize() >= total) {
+                    BaseResp baseResp = BaseResp.ok("已经没有数据了");
+                    baseResp.setTotal(total);
+                    baseResp.setData(new ArrayList<>());
+                    return baseResp;
+                }
+                List<EquipmentEntity> equipmentEntityList = equipmentService.queryList(productForm, user_level);
+                //如果不是导航数据过来的则需要屏蔽搜索货号
+                if (null == productForm.getArticleNumbers() && equipmentEntityList != null && !equipmentEntityList.isEmpty()) {
+                    //筛除屏蔽货号
+                    List<String> articleNumbers = screenService.getArticleNumbers();
+                    if (null != articleNumbers && !articleNumbers.isEmpty()) {
+                        Iterator<EquipmentEntity> it = equipmentEntityList.iterator();
+                        while (it.hasNext()) {
+                            if (articleNumbers.contains(it.next().getArticleNumber())) {
+                                it.remove();
+                            }
                         }
                     }
                 }
-                if (newsearchkeylist.isEmpty() || newsearchkeylist.size() < 1) {
-                    productForm.setSearch_keys(search_keys);
-                } else {
-                    productForm.setSearch_keys(newsearchkeylist);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            log.error("首页商品列表接口转换搜索关键字异常，异常信息为： " + e.getMessage());
-        } finally {
-
-            String open_id = JWTUtil.getCurrentUserOpenId(request);
-            String userinfo = "  --用户open_id: " + open_id + "--  ";
-            if (!StringUtils.isBlank(productForm.getKeyword())) {
-                log.warn(userinfo + "查询关键字为: " + productForm.getSearch_keys());
-
-            }
-            log.warn(userinfo + "首页商品列表接口入参：" + productForm.toString());
-            String user_level = null;
-            Integer total = 0;
-            if (null != equipmentService.queryListTotal(productForm)) {
-                total = equipmentService.queryListTotal(productForm);
-            }
-            //防止前端传过来的页码超出索引
-            if ((productForm.getPageIndex() - 1) * productForm.getPageSize() >= total) {
-                BaseResp baseResp = BaseResp.ok("已经没有数据了");
+                BaseResp baseResp = BaseResp.ok(equipmentEntityList);
                 baseResp.setTotal(total);
-                baseResp.setData(new ArrayList<>());
                 return baseResp;
             }
-            List<EquipmentEntity> equipmentEntityList = equipmentService.queryList(productForm, user_level);
-            //如果不是导航数据过来的则需要屏蔽搜索货号
-            if (null == productForm.getArticleNumbers() && equipmentEntityList != null && !equipmentEntityList.isEmpty()) {
-                //筛除屏蔽货号
-                List<String> articleNumbers = screenService.getArticleNumbers();
-                if (null != articleNumbers && !articleNumbers.isEmpty()) {
-                    Iterator<EquipmentEntity> it = equipmentEntityList.iterator();
-                    while (it.hasNext()) {
-                        if (articleNumbers.contains(it.next().getArticleNumber())) {
-                            it.remove();
-                        }
-                    }
-                }
+        }
+
+
+        @PostMapping("/detail")
+        public BaseResp detail (HttpServletRequest request, String articleNumber){
+            if (articleNumber == null || articleNumber == "") {   //校验入参是否为null或是空
+                return BaseResp.error(98, "articleNumber参数异常");
             }
-            BaseResp baseResp = BaseResp.ok(equipmentEntityList);
-            baseResp.setTotal(total);
-            return baseResp;
-        }
-    }
-
-
-    @PostMapping("/detail")
-    public BaseResp detail(HttpServletRequest request, String articleNumber) {
-        if (articleNumber == null || articleNumber == "") {   //校验入参是否为null或是空
-            return BaseResp.error(98, "articleNumber参数异常");
-        }
-        //获得token,校验token正确性
+            //获得token,校验token正确性
 //        if (null == request.getHeader("token") || null == JWTUtil.getCurrentUserOpenId(request)) {
 //            log.warn("商品详情接口token校验失败，token为空");
 //            return BaseResp.error(-3, "token invalid.");
 //        }
-        try {
-            List<EquipmentEntity> list = equipmentService.queryByarticleNumber(articleNumber);   //重点看queryByarticleNumber方法
-            if (list == null || list.isEmpty()) {           //校验列表为null或空的表达式，用||
-                return BaseResp.error("产品为空");
+            try {
+                List<EquipmentEntity> list = equipmentService.queryByarticleNumber(articleNumber);   //重点看queryByarticleNumber方法
+                if (list == null || list.isEmpty()) {           //校验列表为null或空的表达式，用||
+                    return BaseResp.error("产品为空");
+                }
+                return BaseResp.ok(list);
+            } catch (Exception e) {
+                e.printStackTrace();
+                log.error("商品详情页异常，异常信息为：" + e.getMessage());
             }
-            return BaseResp.ok(list);
-        } catch (Exception e) {
-            e.printStackTrace();
-            log.error("商品详情页异常，异常信息为：" + e.getMessage());
+            return BaseResp.error("没有加载成功，请重试");
         }
-        return BaseResp.error("没有加载成功，请重试");
-    }
 
-    @PostMapping("/maodetail")
-    public BaseResp maodetail(String articleNumber) {
-        if (articleNumber == null || articleNumber.isEmpty()) {
-            return BaseResp.error(500, "articleNumber参数异常");
-        }
-        try {
-            List<EquipmentEntity> equipmentEntities = equipmentService.maoQueryByarticleNumber(articleNumber);
-            if (equipmentEntities == null || equipmentEntities.isEmpty()) {
-                return BaseResp.error("产品为空");
+        @PostMapping("/maodetail")
+        public BaseResp maodetail (String articleNumber){
+            if (articleNumber == null || articleNumber.isEmpty()) {
+                return BaseResp.error(500, "articleNumber参数异常");
             }
-            return BaseResp.ok(equipmentEntities);
-            //以下代码是先在这个接口里写完，测试没问题后，然后用一个在EquipmentServiceImpl里的maoQueryByarticleNumber()来实现
-            //其中maoQueryByarticleNumber()中equipmentEntity.setProudcts(productEntities)的实现是直接在EquipmentServiceImpl的方法中的返回值是baseMapper调用dao的方法来得到的
-            //其他的设值都是在EquipmentServiceImpl重写了dao的方法。
+            try {
+                List<EquipmentEntity> equipmentEntities = equipmentService.maoQueryByarticleNumber(articleNumber);
+                if (equipmentEntities == null || equipmentEntities.isEmpty()) {
+                    return BaseResp.error("产品为空");
+                }
+                return BaseResp.ok(equipmentEntities);
+                //以下代码是先在这个接口里写完，测试没问题后，然后用一个在EquipmentServiceImpl里的maoQueryByarticleNumber()来实现
+                //其中maoQueryByarticleNumber()中equipmentEntity.setProudcts(productEntities)的实现是直接在EquipmentServiceImpl的方法中的返回值是baseMapper调用dao的方法来得到的
+                //其他的设值都是在EquipmentServiceImpl重写了dao的方法。
 //            List<EquipmentEntity> equipmentEntities =
 //                    equipmentService.getByArticleNumber(articleNumber);
 //            if (equipmentEntities == null || equipmentEntities.isEmpty()) {
@@ -296,12 +296,12 @@ public class AppProductController {
 //                equipmentEntity.setPrices(prices);
 //            }
 //            return BaseResp.ok(equipmentEntities);
-        } catch (Exception e) {
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return BaseResp.error("没有加载成功，请重试");
         }
-        return BaseResp.error("没有加载成功，请重试");
     }
-}
 
 
 

@@ -14779,3 +14779,691 @@ com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in 
 18:37:18 - DEBUG c.c.w.m.m.a.d.P.getAllByEquipmentId - ==>  Preparing: select * from tb_player_price where equipment_id = ? 
 18:37:18 - DEBUG c.c.w.m.m.a.d.P.getAllByEquipmentId - ==> Parameters: 2(Long)
 18:37:18 - DEBUG c.c.w.m.m.a.d.P.getAllByEquipmentId - <==      Total: 6
+18:40:20 - INFO  c.c.wechat.mall.CikersApplication - Starting CikersApplication on DESKTOP-1GAQLAO with PID 10696 (E:\project\cikers-server\target\classes started by leo in E:\project\cikers-server)
+18:40:20 - INFO  c.c.wechat.mall.CikersApplication - The following profiles are active: dev
+18:40:23 - WARN  c.b.m.toolkit.TableInfoHelper - Warn: Could not find @TableId in Class: com.cikers.wechat.mall.modules.app.entity.ProductPriceEntity.
+18:40:23 - WARN  c.b.m.mapper.AutoSqlInjector - class com.cikers.wechat.mall.modules.app.entity.ProductPriceEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+18:40:24 - INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 3837 ms
+18:40:25 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@514981f7: startup date [Wed Apr 17 18:40:20 CST 2019]; root of context hierarchy
+18:40:25 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/wechat/products/list],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.AppProductController.list(com.cikers.wechat.mall.modules.app.form.ProductForm,javax.servlet.http.HttpServletRequest)
+18:40:25 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/wechat/products/detail],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.AppProductController.detail(javax.servlet.http.HttpServletRequest,java.lang.String)
+18:40:25 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/wechat/products/maodetail],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.AppProductController.maodetail(java.lang.String)
+18:40:25 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/wechat/products/maoQueryList],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.AppProductController.maoQueryList(com.cikers.wechat.mall.modules.app.form.ProductForm,javax.servlet.http.HttpServletRequest)
+18:40:25 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/escape/insertEscapeEntity],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.EscapeController.insertEscapeEntity(java.lang.String,java.lang.String)
+18:40:25 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/escape/getEscapeEntity],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.EscapeController.getEscapeEntity()
+18:40:25 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/screen/getAllScreen],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.ScreenController.getAllScreen()
+18:40:25 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/screen/insertScreen],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.ScreenController.insertScreen(java.lang.String)
+18:40:25 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+18:40:25 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+18:40:25 - INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:40:25 - INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:40:25 - INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:40:26 - INFO  o.s.w.s.v.f.FreeMarkerConfigurer - ClassTemplateLoader for Spring macros added to FreeMarker configuration
+18:40:26 - INFO  c.c.wechat.mall.CikersApplication - Started CikersApplication in 6.123 seconds (JVM running for 7.249)
+18:40:30 - INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization started
+18:40:30 - INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization completed in 23 ms
+18:40:30 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - ==>  Preparing: SELECT count(distinct article_number) FROM tb_equipment where article_number = ? and state = 'NORMAL' 
+18:40:30 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - ==> Parameters: C17S201AAZ1(String)
+18:40:30 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - <==      Total: 1
+18:40:30 - ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [/cikers] threw exception [Request processing failed; nested exception is java.lang.NullPointerException] with root cause
+java.lang.NullPointerException: null
+	at com.cikers.wechat.mall.modules.app.controller.AppProductController.maoQueryList(AppProductController.java:62)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:661)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)
+	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:365)
+	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)
+	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)
+	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:383)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:108)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+18:41:49 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - ==>  Preparing: SELECT count(distinct article_number) FROM tb_equipment where article_number = ? and state = 'NORMAL' 
+18:41:49 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - ==> Parameters: C17S201AAZ1(String)
+18:41:49 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - <==      Total: 1
+18:41:50 - DEBUG c.c.w.m.m.a.d.E.getSearchKeyByKeyword - ==>  Preparing: select search_key from tb_escape where key_word = ? 
+18:41:50 - DEBUG c.c.w.m.m.a.d.E.getSearchKeyByKeyword - ==> Parameters: 足球(String)
+18:41:50 - DEBUG c.c.w.m.m.a.d.E.getSearchKeyByKeyword - <==      Total: 0
+18:41:50 - DEBUG c.c.w.m.m.a.d.E.maoQueryList - ==>  Preparing: SELECT *,GROUP_CONCAT(id) as ids FROM tb_equipment WHERE state = 'NORMAL' and article_number in ( ? ) GROUP BY article_number order by disp_order ASC LIMIT ?, ?; 
+18:41:50 - DEBUG c.c.w.m.m.a.d.E.maoQueryList - ==> Parameters: C17S201AAZ1(String), 0(Integer), 10(Integer)
+18:41:50 - DEBUG c.c.w.m.m.a.d.E.maoQueryList - <==      Total: 1
+18:41:50 - DEBUG c.c.w.m.m.a.d.P.selectList - ==>  Preparing: SELECT id AS id,equipment_id AS equipmentId,product_id AS productId,property_id AS propertyId,property_name AS propertyName FROM tb_property_relation WHERE (equipment_id = ? AND property_name = ?) 
+18:41:50 - DEBUG c.c.w.m.m.a.d.P.selectList - ==> Parameters: 2(Long), MAINCOLOR(String)
+18:41:50 - DEBUG c.c.w.m.m.a.d.P.selectList - <==      Total: 1
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 180(Long)
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:41:50 - DEBUG c.c.w.m.m.a.d.P.selectByEqptId - ==>  Preparing: SELECT * FROM tb_property_relation WHERE equipment_id = ?; 
+18:41:50 - DEBUG c.c.w.m.m.a.d.P.selectByEqptId - ==> Parameters: 2(Long)
+18:41:50 - DEBUG c.c.w.m.m.a.d.P.selectByEqptId - <==      Total: 9
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 3(Long)
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 36(Long)
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 167(Long)
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 56(Long)
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 108(Long)
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 4(Long)
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 180(Long)
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 112(Long)
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 1(Long)
+18:41:50 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:41:50 - DEBUG c.c.w.m.m.a.d.P.selectList - ==>  Preparing: SELECT equipment_id AS equipmentId,`level`,price,`type` FROM tb_product_price WHERE (equipment_id = ?) 
+18:41:50 - DEBUG c.c.w.m.m.a.d.P.selectList - ==> Parameters: 2(Long)
+18:41:50 - DEBUG c.c.w.m.m.a.d.P.selectList - <==      Total: 6
+18:41:50 - DEBUG c.c.w.m.m.a.d.P.getAllByEquipmentId - ==>  Preparing: select * from tb_player_price where equipment_id = ? 
+18:41:50 - DEBUG c.c.w.m.m.a.d.P.getAllByEquipmentId - ==> Parameters: 2(Long)
+18:41:50 - DEBUG c.c.w.m.m.a.d.P.getAllByEquipmentId - <==      Total: 6
+18:43:09 - INFO  c.c.wechat.mall.CikersApplication - Starting CikersApplication on DESKTOP-1GAQLAO with PID 14280 (E:\project\cikers-server\target\classes started by leo in E:\project\cikers-server)
+18:43:09 - INFO  c.c.wechat.mall.CikersApplication - The following profiles are active: dev
+18:43:12 - WARN  c.b.m.toolkit.TableInfoHelper - Warn: Could not find @TableId in Class: com.cikers.wechat.mall.modules.app.entity.ProductPriceEntity.
+18:43:12 - WARN  c.b.m.mapper.AutoSqlInjector - class com.cikers.wechat.mall.modules.app.entity.ProductPriceEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+18:43:13 - INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 3821 ms
+18:43:14 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@74818a74: startup date [Wed Apr 17 18:43:09 CST 2019]; root of context hierarchy
+18:43:14 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/wechat/products/list],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.AppProductController.list(com.cikers.wechat.mall.modules.app.form.ProductForm,javax.servlet.http.HttpServletRequest)
+18:43:14 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/wechat/products/detail],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.AppProductController.detail(javax.servlet.http.HttpServletRequest,java.lang.String)
+18:43:14 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/wechat/products/maoQueryList],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.AppProductController.maoQueryList(com.cikers.wechat.mall.modules.app.form.ProductForm,javax.servlet.http.HttpServletRequest)
+18:43:14 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/wechat/products/maodetail],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.AppProductController.maodetail(java.lang.String)
+18:43:14 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/escape/insertEscapeEntity],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.EscapeController.insertEscapeEntity(java.lang.String,java.lang.String)
+18:43:14 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/escape/getEscapeEntity],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.EscapeController.getEscapeEntity()
+18:43:14 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/screen/getAllScreen],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.ScreenController.getAllScreen()
+18:43:14 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/screen/insertScreen],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.ScreenController.insertScreen(java.lang.String)
+18:43:14 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+18:43:14 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+18:43:14 - INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:43:14 - INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:43:14 - INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:43:14 - INFO  o.s.w.s.v.f.FreeMarkerConfigurer - ClassTemplateLoader for Spring macros added to FreeMarker configuration
+18:43:15 - INFO  c.c.wechat.mall.CikersApplication - Started CikersApplication in 6.272 seconds (JVM running for 7.198)
+18:43:21 - INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization started
+18:43:21 - INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization completed in 23 ms
+18:43:22 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - ==>  Preparing: SELECT count(distinct article_number) FROM tb_equipment where article_number = ? and state = 'NORMAL' 
+18:43:22 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - ==> Parameters: C17S201AAZ1(String)
+18:43:22 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - <==      Total: 1
+18:43:22 - DEBUG c.c.w.m.m.a.d.E.getSearchKeyByKeyword - ==>  Preparing: select search_key from tb_escape where key_word = ? 
+18:43:22 - DEBUG c.c.w.m.m.a.d.E.getSearchKeyByKeyword - ==> Parameters: 足球(String)
+18:43:22 - DEBUG c.c.w.m.m.a.d.E.getSearchKeyByKeyword - <==      Total: 0
+18:43:22 - DEBUG c.c.w.m.m.a.d.E.maoQueryList - ==>  Preparing: SELECT *,GROUP_CONCAT(id) as ids FROM tb_equipment WHERE state = 'NORMAL' and article_number in ( ? ) and ( search_key LIKE %?% ) GROUP BY article_number order by disp_order ASC LIMIT ?, ?; 
+18:43:22 - ERROR c.a.druid.filter.stat.StatFilter - merge sql error, dbType mysql, sql : SELECT *,GROUP_CONCAT(id) as ids
+        FROM tb_equipment
+         WHERE state = 'NORMAL'
+            
+                and  article_number in
+                (
+                    ?
+                )
+            
+            
+                and
+                (
+                    search_key LIKE  %?%
+                ) 
+        GROUP BY article_number order by disp_order ASC LIMIT ?, ?;
+com.alibaba.druid.sql.parser.ParserException: ERROR. pos 303, line 13, column 37, token PERCENT
+	at com.alibaba.druid.sql.parser.SQLExprParser.primary(SQLExprParser.java:697)
+	at com.alibaba.druid.sql.dialect.mysql.parser.MySqlExprParser.primary(MySqlExprParser.java:144)
+	at com.alibaba.druid.sql.parser.SQLExprParser.bitXor(SQLExprParser.java:133)
+	at com.alibaba.druid.sql.parser.SQLExprParser.multiplicative(SQLExprParser.java:213)
+	at com.alibaba.druid.sql.parser.SQLExprParser.additive(SQLExprParser.java:1577)
+	at com.alibaba.druid.sql.parser.SQLExprParser.shift(SQLExprParser.java:1607)
+	at com.alibaba.druid.sql.parser.SQLExprParser.bitAnd(SQLExprParser.java:1464)
+	at com.alibaba.druid.sql.parser.SQLExprParser.bitOr(SQLExprParser.java:1478)
+	at com.alibaba.druid.sql.parser.SQLExprParser.relationalRest(SQLExprParser.java:1833)
+	at com.alibaba.druid.sql.parser.SQLExprParser.exprRest(SQLExprParser.java:124)
+	at com.alibaba.druid.sql.parser.SQLExprParser.expr(SQLExprParser.java:112)
+	at com.alibaba.druid.sql.parser.SQLExprParser.primary(SQLExprParser.java:281)
+	at com.alibaba.druid.sql.dialect.mysql.parser.MySqlExprParser.primary(MySqlExprParser.java:144)
+	at com.alibaba.druid.sql.parser.SQLExprParser.bitXor(SQLExprParser.java:133)
+	at com.alibaba.druid.sql.parser.SQLExprParser.multiplicative(SQLExprParser.java:213)
+	at com.alibaba.druid.sql.parser.SQLExprParser.additive(SQLExprParser.java:1577)
+	at com.alibaba.druid.sql.parser.SQLExprParser.shift(SQLExprParser.java:1607)
+	at com.alibaba.druid.sql.parser.SQLExprParser.bitAnd(SQLExprParser.java:1464)
+	at com.alibaba.druid.sql.parser.SQLExprParser.bitOr(SQLExprParser.java:1478)
+	at com.alibaba.druid.sql.parser.SQLExprParser.equality(SQLExprParser.java:1493)
+	at com.alibaba.druid.sql.parser.SQLExprParser.relational(SQLExprParser.java:1757)
+	at com.alibaba.druid.sql.parser.SQLExprParser.andRest(SQLExprParser.java:1659)
+	at com.alibaba.druid.sql.parser.SQLExprParser.expr(SQLExprParser.java:109)
+	at com.alibaba.druid.sql.parser.SQLSelectParser.expr(SQLSelectParser.java:697)
+	at com.alibaba.druid.sql.parser.SQLSelectParser.parseWhere(SQLSelectParser.java:318)
+	at com.alibaba.druid.sql.dialect.mysql.parser.MySqlSelectParser.query(MySqlSelectParser.java:162)
+	at com.alibaba.druid.sql.parser.SQLSelectParser.select(SQLSelectParser.java:50)
+	at com.alibaba.druid.sql.dialect.mysql.parser.MySqlStatementParser.parseSelect(MySqlStatementParser.java:123)
+	at com.alibaba.druid.sql.parser.SQLStatementParser.parseStatementList(SQLStatementParser.java:133)
+	at com.alibaba.druid.sql.parser.SQLStatementParser.parseStatementList(SQLStatementParser.java:70)
+	at com.alibaba.druid.sql.visitor.ParameterizedOutputVisitorUtils.parameterize(ParameterizedOutputVisitorUtils.java:42)
+	at com.alibaba.druid.filter.stat.StatFilter.mergeSql(StatFilter.java:146)
+	at com.alibaba.druid.filter.stat.StatFilter.createSqlStat(StatFilter.java:634)
+	at com.alibaba.druid.filter.stat.StatFilter.statementPrepareAfter(StatFilter.java:310)
+	at com.alibaba.druid.filter.FilterEventAdapter.connection_prepareStatement(FilterEventAdapter.java:124)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_prepareStatement(FilterChainImpl.java:473)
+	at com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl.prepareStatement(ConnectionProxyImpl.java:342)
+	at com.alibaba.druid.pool.DruidPooledConnection.prepareStatement(DruidPooledConnection.java:350)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.ibatis.logging.jdbc.ConnectionLogger.invoke(ConnectionLogger.java:55)
+	at com.sun.proxy.$Proxy99.prepareStatement(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.instantiateStatement(PreparedStatementHandler.java:87)
+	at org.apache.ibatis.executor.statement.BaseStatementHandler.prepare(BaseStatementHandler.java:88)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.prepare(RoutingStatementHandler.java:59)
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:85)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:62)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:324)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:136)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:148)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:141)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433)
+	at com.sun.proxy.$Proxy63.selectList(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:230)
+	at org.apache.ibatis.binding.MapperMethod.executeForMany(MapperMethod.java:137)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:75)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:59)
+	at com.sun.proxy.$Proxy81.maoQueryList(Unknown Source)
+	at com.cikers.wechat.mall.modules.app.service.impl.EquipmentServiceImpl.maoQueryList(EquipmentServiceImpl.java:53)
+	at com.cikers.wechat.mall.modules.app.service.impl.EquipmentServiceImpl$$FastClassBySpringCGLIB$$c37d8696.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:669)
+	at com.cikers.wechat.mall.modules.app.service.impl.EquipmentServiceImpl$$EnhancerBySpringCGLIB$$7d3869bd.maoQueryList(<generated>)
+	at com.cikers.wechat.mall.modules.app.service.impl.EquipmentServiceImpl$$FastClassBySpringCGLIB$$c37d8696.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:669)
+	at com.cikers.wechat.mall.modules.app.service.impl.EquipmentServiceImpl$$EnhancerBySpringCGLIB$$100d0f7f.maoQueryList(<generated>)
+	at com.cikers.wechat.mall.modules.app.controller.AppProductController.maoQueryList(AppProductController.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:661)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)
+	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:365)
+	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)
+	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)
+	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:383)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:108)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+18:43:22 - DEBUG c.c.w.m.m.a.d.E.maoQueryList - ==> Parameters: C17S201AAZ1(String), 足球(String), 0(Integer), 10(Integer)
+18:43:22 - ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [/cikers] threw exception [Request processing failed; nested exception is org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%'足球'%
+                ) 
+        GROUP BY article_number order by disp_orde' at line 13
+### The error may exist in file [E:\project\cikers-server\target\classes\mapper\app\EquipmentDao.xml]
+### The error may involve com.cikers.wechat.mall.modules.app.dao.EquipmentDao.maoQueryList-Inline
+### The error occurred while setting parameters
+### SQL: SELECT *,GROUP_CONCAT(id) as ids         FROM tb_equipment          WHERE state = 'NORMAL'                              and  article_number in                 (                     ?                 )                                           and                 (                     search_key LIKE  %?%                 )          GROUP BY article_number order by disp_order ASC LIMIT ?, ?;
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%'足球'%
+                ) 
+        GROUP BY article_number order by disp_orde' at line 13
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%'足球'%
+                ) 
+        GROUP BY article_number order by disp_orde' at line 13] with root cause
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%'足球'%
+                ) 
+        GROUP BY article_number order by disp_orde' at line 13
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)
+	at com.mysql.jdbc.Util.getInstance(Util.java:387)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:939)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3878)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3814)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2478)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2625)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2551)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1861)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1192)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3051)
+	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:440)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3049)
+	at com.alibaba.druid.proxy.jdbc.PreparedStatementProxyImpl.execute(PreparedStatementProxyImpl.java:168)
+	at com.alibaba.druid.pool.DruidPooledPreparedStatement.execute(DruidPooledPreparedStatement.java:494)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
+	at com.sun.proxy.$Proxy100.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:63)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:324)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:136)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:148)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:141)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433)
+	at com.sun.proxy.$Proxy63.selectList(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:230)
+	at org.apache.ibatis.binding.MapperMethod.executeForMany(MapperMethod.java:137)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:75)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:59)
+	at com.sun.proxy.$Proxy81.maoQueryList(Unknown Source)
+	at com.cikers.wechat.mall.modules.app.service.impl.EquipmentServiceImpl.maoQueryList(EquipmentServiceImpl.java:53)
+	at com.cikers.wechat.mall.modules.app.service.impl.EquipmentServiceImpl$$FastClassBySpringCGLIB$$c37d8696.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:669)
+	at com.cikers.wechat.mall.modules.app.service.impl.EquipmentServiceImpl$$EnhancerBySpringCGLIB$$7d3869bd.maoQueryList(<generated>)
+	at com.cikers.wechat.mall.modules.app.service.impl.EquipmentServiceImpl$$FastClassBySpringCGLIB$$c37d8696.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:669)
+	at com.cikers.wechat.mall.modules.app.service.impl.EquipmentServiceImpl$$EnhancerBySpringCGLIB$$100d0f7f.maoQueryList(<generated>)
+	at com.cikers.wechat.mall.modules.app.controller.AppProductController.maoQueryList(AppProductController.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:661)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)
+	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:365)
+	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)
+	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)
+	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:383)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:108)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+18:44:20 - INFO  c.c.wechat.mall.CikersApplication - Starting CikersApplication on DESKTOP-1GAQLAO with PID 13528 (E:\project\cikers-server\target\classes started by leo in E:\project\cikers-server)
+18:44:20 - INFO  c.c.wechat.mall.CikersApplication - The following profiles are active: dev
+18:44:23 - WARN  c.b.m.toolkit.TableInfoHelper - Warn: Could not find @TableId in Class: com.cikers.wechat.mall.modules.app.entity.ProductPriceEntity.
+18:44:23 - WARN  c.b.m.mapper.AutoSqlInjector - class com.cikers.wechat.mall.modules.app.entity.ProductPriceEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+18:44:24 - INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 4394 ms
+18:44:26 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7b364527: startup date [Wed Apr 17 18:44:20 CST 2019]; root of context hierarchy
+18:44:26 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/wechat/products/list],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.AppProductController.list(com.cikers.wechat.mall.modules.app.form.ProductForm,javax.servlet.http.HttpServletRequest)
+18:44:26 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/wechat/products/detail],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.AppProductController.detail(javax.servlet.http.HttpServletRequest,java.lang.String)
+18:44:26 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/wechat/products/maoQueryList],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.AppProductController.maoQueryList(com.cikers.wechat.mall.modules.app.form.ProductForm,javax.servlet.http.HttpServletRequest)
+18:44:26 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/wechat/products/maodetail],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.AppProductController.maodetail(java.lang.String)
+18:44:26 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/escape/insertEscapeEntity],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.EscapeController.insertEscapeEntity(java.lang.String,java.lang.String)
+18:44:26 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/escape/getEscapeEntity],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.EscapeController.getEscapeEntity()
+18:44:26 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/screen/getAllScreen],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.ScreenController.getAllScreen()
+18:44:26 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/screen/insertScreen],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.ScreenController.insertScreen(java.lang.String)
+18:44:26 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+18:44:26 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+18:44:27 - INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:44:27 - INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:44:27 - INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:44:28 - INFO  o.s.w.s.v.f.FreeMarkerConfigurer - ClassTemplateLoader for Spring macros added to FreeMarker configuration
+18:44:28 - INFO  c.c.wechat.mall.CikersApplication - Started CikersApplication in 8.891 seconds (JVM running for 10.021)
+18:44:30 - INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization started
+18:44:30 - INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization completed in 35 ms
+18:44:31 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - ==>  Preparing: SELECT count(distinct article_number) FROM tb_equipment where article_number = ? and state = 'NORMAL' 
+18:44:31 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - ==> Parameters: C17S201AAZ1(String)
+18:44:31 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - <==      Total: 1
+18:44:31 - DEBUG c.c.w.m.m.a.d.E.getSearchKeyByKeyword - ==>  Preparing: select search_key from tb_escape where key_word = ? 
+18:44:31 - DEBUG c.c.w.m.m.a.d.E.getSearchKeyByKeyword - ==> Parameters: 足球(String)
+18:44:31 - DEBUG c.c.w.m.m.a.d.E.getSearchKeyByKeyword - <==      Total: 0
+18:45:02 - INFO  c.c.wechat.mall.CikersApplication - Starting CikersApplication on DESKTOP-1GAQLAO with PID 13660 (E:\project\cikers-server\target\classes started by leo in E:\project\cikers-server)
+18:45:02 - INFO  c.c.wechat.mall.CikersApplication - The following profiles are active: dev
+18:45:05 - WARN  c.b.m.toolkit.TableInfoHelper - Warn: Could not find @TableId in Class: com.cikers.wechat.mall.modules.app.entity.ProductPriceEntity.
+18:45:05 - WARN  c.b.m.mapper.AutoSqlInjector - class com.cikers.wechat.mall.modules.app.entity.ProductPriceEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+18:45:06 - INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 3799 ms
+18:45:07 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1ebcde74: startup date [Wed Apr 17 18:45:02 CST 2019]; root of context hierarchy
+18:45:07 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/wechat/products/list],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.AppProductController.list(com.cikers.wechat.mall.modules.app.form.ProductForm,javax.servlet.http.HttpServletRequest)
+18:45:07 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/wechat/products/detail],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.AppProductController.detail(javax.servlet.http.HttpServletRequest,java.lang.String)
+18:45:07 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/wechat/products/maoQueryList],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.AppProductController.maoQueryList(com.cikers.wechat.mall.modules.app.form.ProductForm,javax.servlet.http.HttpServletRequest)
+18:45:07 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/wechat/products/maodetail],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.AppProductController.maodetail(java.lang.String)
+18:45:07 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/escape/insertEscapeEntity],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.EscapeController.insertEscapeEntity(java.lang.String,java.lang.String)
+18:45:07 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/escape/getEscapeEntity],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.EscapeController.getEscapeEntity()
+18:45:07 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/screen/insertScreen],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.ScreenController.insertScreen(java.lang.String)
+18:45:07 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/screen/getAllScreen],methods=[POST]}" onto public com.cikers.wechat.mall.modules.app.utils.BaseResp com.cikers.wechat.mall.modules.app.controller.ScreenController.getAllScreen()
+18:45:07 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+18:45:07 - INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+18:45:07 - INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:45:07 - INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:45:07 - INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:45:07 - INFO  o.s.w.s.v.f.FreeMarkerConfigurer - ClassTemplateLoader for Spring macros added to FreeMarker configuration
+18:45:08 - INFO  c.c.wechat.mall.CikersApplication - Started CikersApplication in 6.097 seconds (JVM running for 7.149)
+18:45:37 - INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization started
+18:45:37 - INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization completed in 23 ms
+18:45:37 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - ==>  Preparing: SELECT count(distinct article_number) FROM tb_equipment where article_number = ? and state = 'NORMAL' 
+18:45:37 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - ==> Parameters: C17S201AAZ1(String)
+18:45:37 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - <==      Total: 1
+18:45:37 - DEBUG c.c.w.m.m.a.d.E.getSearchKeyByKeyword - ==>  Preparing: select search_key from tb_escape where key_word = ? 
+18:45:37 - DEBUG c.c.w.m.m.a.d.E.getSearchKeyByKeyword - ==> Parameters: 足球(String)
+18:45:37 - DEBUG c.c.w.m.m.a.d.E.getSearchKeyByKeyword - <==      Total: 0
+18:45:37 - DEBUG c.c.w.m.m.a.d.E.maoQueryList - ==>  Preparing: SELECT *,GROUP_CONCAT(id) as ids FROM tb_equipment WHERE state = 'NORMAL' and article_number in ( ? ) GROUP BY article_number order by disp_order ASC LIMIT ?, ?; 
+18:45:37 - DEBUG c.c.w.m.m.a.d.E.maoQueryList - ==> Parameters: C17S201AAZ1(String), 0(Integer), 10(Integer)
+18:45:37 - DEBUG c.c.w.m.m.a.d.E.maoQueryList - <==      Total: 1
+18:45:37 - DEBUG c.c.w.m.m.a.d.P.selectList - ==>  Preparing: SELECT id AS id,equipment_id AS equipmentId,product_id AS productId,property_id AS propertyId,property_name AS propertyName FROM tb_property_relation WHERE (equipment_id = ? AND property_name = ?) 
+18:45:37 - DEBUG c.c.w.m.m.a.d.P.selectList - ==> Parameters: 2(Long), MAINCOLOR(String)
+18:45:37 - DEBUG c.c.w.m.m.a.d.P.selectList - <==      Total: 1
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 180(Long)
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:45:37 - DEBUG c.c.w.m.m.a.d.P.selectByEqptId - ==>  Preparing: SELECT * FROM tb_property_relation WHERE equipment_id = ?; 
+18:45:37 - DEBUG c.c.w.m.m.a.d.P.selectByEqptId - ==> Parameters: 2(Long)
+18:45:37 - DEBUG c.c.w.m.m.a.d.P.selectByEqptId - <==      Total: 9
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 3(Long)
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 36(Long)
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 167(Long)
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 56(Long)
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 108(Long)
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 4(Long)
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 180(Long)
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 112(Long)
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 1(Long)
+18:45:37 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:45:37 - DEBUG c.c.w.m.m.a.d.P.selectList - ==>  Preparing: SELECT equipment_id AS equipmentId,`level`,price,`type` FROM tb_product_price WHERE (equipment_id = ?) 
+18:45:37 - DEBUG c.c.w.m.m.a.d.P.selectList - ==> Parameters: 2(Long)
+18:45:37 - DEBUG c.c.w.m.m.a.d.P.selectList - <==      Total: 6
+18:45:37 - DEBUG c.c.w.m.m.a.d.P.getAllByEquipmentId - ==>  Preparing: select * from tb_player_price where equipment_id = ? 
+18:45:37 - DEBUG c.c.w.m.m.a.d.P.getAllByEquipmentId - ==> Parameters: 2(Long)
+18:45:37 - DEBUG c.c.w.m.m.a.d.P.getAllByEquipmentId - <==      Total: 6
+18:45:42 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - ==>  Preparing: SELECT count(distinct article_number) FROM tb_equipment where article_number = ? and state = 'NORMAL' 
+18:45:42 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - ==> Parameters: C17S201AAZ1(String)
+18:45:42 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - <==      Total: 1
+18:45:42 - DEBUG c.c.w.m.m.a.d.E.maoQueryList - ==>  Preparing: SELECT *,GROUP_CONCAT(id) as ids FROM tb_equipment WHERE state = 'NORMAL' and article_number in ( ? ) GROUP BY article_number order by disp_order ASC LIMIT ?, ?; 
+18:45:42 - DEBUG c.c.w.m.m.a.d.E.maoQueryList - ==> Parameters: C17S201AAZ1(String), 0(Integer), 10(Integer)
+18:45:42 - DEBUG c.c.w.m.m.a.d.E.maoQueryList - <==      Total: 1
+18:45:42 - DEBUG c.c.w.m.m.a.d.P.selectList - ==>  Preparing: SELECT id AS id,equipment_id AS equipmentId,product_id AS productId,property_id AS propertyId,property_name AS propertyName FROM tb_property_relation WHERE (equipment_id = ? AND property_name = ?) 
+18:45:42 - DEBUG c.c.w.m.m.a.d.P.selectList - ==> Parameters: 2(Long), MAINCOLOR(String)
+18:45:42 - DEBUG c.c.w.m.m.a.d.P.selectList - <==      Total: 1
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 180(Long)
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:45:42 - DEBUG c.c.w.m.m.a.d.P.selectByEqptId - ==>  Preparing: SELECT * FROM tb_property_relation WHERE equipment_id = ?; 
+18:45:42 - DEBUG c.c.w.m.m.a.d.P.selectByEqptId - ==> Parameters: 2(Long)
+18:45:42 - DEBUG c.c.w.m.m.a.d.P.selectByEqptId - <==      Total: 9
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 3(Long)
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 36(Long)
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 167(Long)
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 56(Long)
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 108(Long)
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 4(Long)
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 180(Long)
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 112(Long)
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 1(Long)
+18:45:42 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:45:42 - DEBUG c.c.w.m.m.a.d.P.selectList - ==>  Preparing: SELECT equipment_id AS equipmentId,`level`,price,`type` FROM tb_product_price WHERE (equipment_id = ?) 
+18:45:42 - DEBUG c.c.w.m.m.a.d.P.selectList - ==> Parameters: 2(Long)
+18:45:42 - DEBUG c.c.w.m.m.a.d.P.selectList - <==      Total: 6
+18:45:42 - DEBUG c.c.w.m.m.a.d.P.getAllByEquipmentId - ==>  Preparing: select * from tb_player_price where equipment_id = ? 
+18:45:42 - DEBUG c.c.w.m.m.a.d.P.getAllByEquipmentId - ==> Parameters: 2(Long)
+18:45:42 - DEBUG c.c.w.m.m.a.d.P.getAllByEquipmentId - <==      Total: 6
+18:46:00 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - ==>  Preparing: SELECT count(distinct article_number) FROM tb_equipment where article_number = ? and state = 'NORMAL' 
+18:46:00 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - ==> Parameters: C17S201AAZ1(String)
+18:46:00 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - <==      Total: 1
+18:46:00 - DEBUG c.c.w.m.m.a.d.E.getSearchKeyByKeyword - ==>  Preparing: select search_key from tb_escape where key_word = ? 
+18:46:00 - DEBUG c.c.w.m.m.a.d.E.getSearchKeyByKeyword - ==> Parameters: (String)
+18:46:00 - DEBUG c.c.w.m.m.a.d.E.getSearchKeyByKeyword - <==      Total: 0
+18:46:00 - DEBUG c.c.w.m.m.a.d.E.maoQueryList - ==>  Preparing: SELECT *,GROUP_CONCAT(id) as ids FROM tb_equipment WHERE state = 'NORMAL' and article_number in ( ? ) GROUP BY article_number order by disp_order ASC LIMIT ?, ?; 
+18:46:00 - DEBUG c.c.w.m.m.a.d.E.maoQueryList - ==> Parameters: C17S201AAZ1(String), 0(Integer), 10(Integer)
+18:46:00 - DEBUG c.c.w.m.m.a.d.E.maoQueryList - <==      Total: 1
+18:46:00 - DEBUG c.c.w.m.m.a.d.P.selectList - ==>  Preparing: SELECT id AS id,equipment_id AS equipmentId,product_id AS productId,property_id AS propertyId,property_name AS propertyName FROM tb_property_relation WHERE (equipment_id = ? AND property_name = ?) 
+18:46:00 - DEBUG c.c.w.m.m.a.d.P.selectList - ==> Parameters: 2(Long), MAINCOLOR(String)
+18:46:00 - DEBUG c.c.w.m.m.a.d.P.selectList - <==      Total: 1
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 180(Long)
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:46:00 - DEBUG c.c.w.m.m.a.d.P.selectByEqptId - ==>  Preparing: SELECT * FROM tb_property_relation WHERE equipment_id = ?; 
+18:46:00 - DEBUG c.c.w.m.m.a.d.P.selectByEqptId - ==> Parameters: 2(Long)
+18:46:00 - DEBUG c.c.w.m.m.a.d.P.selectByEqptId - <==      Total: 9
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 3(Long)
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 36(Long)
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 167(Long)
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 56(Long)
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 108(Long)
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 4(Long)
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 180(Long)
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 112(Long)
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 1(Long)
+18:46:00 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:46:00 - DEBUG c.c.w.m.m.a.d.P.selectList - ==>  Preparing: SELECT equipment_id AS equipmentId,`level`,price,`type` FROM tb_product_price WHERE (equipment_id = ?) 
+18:46:00 - DEBUG c.c.w.m.m.a.d.P.selectList - ==> Parameters: 2(Long)
+18:46:00 - DEBUG c.c.w.m.m.a.d.P.selectList - <==      Total: 6
+18:46:00 - DEBUG c.c.w.m.m.a.d.P.getAllByEquipmentId - ==>  Preparing: select * from tb_player_price where equipment_id = ? 
+18:46:00 - DEBUG c.c.w.m.m.a.d.P.getAllByEquipmentId - ==> Parameters: 2(Long)
+18:46:00 - DEBUG c.c.w.m.m.a.d.P.getAllByEquipmentId - <==      Total: 6
