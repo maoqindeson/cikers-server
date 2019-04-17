@@ -51,11 +51,13 @@ public class AppProductController {
         if (offset < 0) {
             return BaseResp.error("页码不正确，必须大于0的整数");
         }
-        List<String> articleNumbers = productForm.getArticleNumbers();
-        for (String articleNumber : articleNumbers) {
-            Integer total = equipmentService.maoQueryListTotal(articleNumber);
-            if (offset > total) {
-                return BaseResp.error("超出列表范围");
+        if(productForm.getArticleNumbers()!=null&&!productForm.getArticleNumbers().isEmpty()) {
+            List<String> articleNumbers = productForm.getArticleNumbers();
+            for (String articleNumber : articleNumbers) {
+                Integer total = equipmentService.maoQueryListTotal(articleNumber);
+                if (offset > total) {
+                    return BaseResp.error("超出列表范围");
+                }
             }
         }
         productForm.setOffset(offset);
