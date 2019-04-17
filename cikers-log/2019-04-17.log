@@ -14579,3 +14579,203 @@ com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in 
 18:35:46 - INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
 18:35:47 - INFO  o.s.w.s.v.f.FreeMarkerConfigurer - ClassTemplateLoader for Spring macros added to FreeMarker configuration
 18:35:47 - INFO  c.c.wechat.mall.CikersApplication - Started CikersApplication in 8.886 seconds (JVM running for 10.216)
+18:36:26 - INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization started
+18:36:26 - INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization completed in 30 ms
+18:36:26 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - ==>  Preparing: SELECT count(distinct article_number) FROM tb_equipment where article_number = ? and state = 'NORMAL' 
+18:36:26 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - ==> Parameters: C17S201AAZ1(String)
+18:36:26 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - <==      Total: 1
+18:36:26 - DEBUG c.c.w.m.m.a.d.E.maoQueryList - ==>  Preparing: SELECT *,GROUP_CONCAT(id) as ids FROM tb_equipment WHERE state = 'NORMAL' and article_number in ( ? ) GROUP BY article_number order by disp_order ASC LIMIT ?, ?; 
+18:36:26 - DEBUG c.c.w.m.m.a.d.E.maoQueryList - ==> Parameters: C17S201AAZ1(String), 0(Integer), 10(Integer)
+18:36:26 - DEBUG c.c.w.m.m.a.d.E.maoQueryList - <==      Total: 1
+18:36:26 - DEBUG c.c.w.m.m.a.d.P.selectList - ==>  Preparing: SELECT id AS id,equipment_id AS equipmentId,product_id AS productId,property_id AS propertyId,property_name AS propertyName FROM tb_property_relation WHERE (equipment_id = ? AND property_name = ?) 
+18:36:26 - DEBUG c.c.w.m.m.a.d.P.selectList - ==> Parameters: 2(Long), MAINCOLOR(String)
+18:36:26 - DEBUG c.c.w.m.m.a.d.P.selectList - <==      Total: 1
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 180(Long)
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:36:26 - DEBUG c.c.w.m.m.a.d.P.selectByEqptId - ==>  Preparing: SELECT * FROM tb_property_relation WHERE equipment_id = ?; 
+18:36:26 - DEBUG c.c.w.m.m.a.d.P.selectByEqptId - ==> Parameters: 2(Long)
+18:36:26 - DEBUG c.c.w.m.m.a.d.P.selectByEqptId - <==      Total: 9
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 3(Long)
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 36(Long)
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 167(Long)
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 56(Long)
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 108(Long)
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 4(Long)
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 180(Long)
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 112(Long)
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 1(Long)
+18:36:26 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:36:27 - DEBUG c.c.w.m.m.a.d.P.selectList - ==>  Preparing: SELECT equipment_id AS equipmentId,`level`,price,`type` FROM tb_product_price WHERE (equipment_id = ?) 
+18:36:27 - DEBUG c.c.w.m.m.a.d.P.selectList - ==> Parameters: 2(Long)
+18:36:27 - DEBUG c.c.w.m.m.a.d.P.selectList - <==      Total: 6
+18:36:27 - DEBUG c.c.w.m.m.a.d.P.getAllByEquipmentId - ==>  Preparing: select * from tb_player_price where equipment_id = ? 
+18:36:27 - DEBUG c.c.w.m.m.a.d.P.getAllByEquipmentId - ==> Parameters: 2(Long)
+18:36:27 - DEBUG c.c.w.m.m.a.d.P.getAllByEquipmentId - <==      Total: 6
+18:36:31 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - ==>  Preparing: SELECT count(distinct article_number) FROM tb_equipment where article_number = ? and state = 'NORMAL' 
+18:36:31 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - ==> Parameters: C17S201AAZ1(String)
+18:36:31 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - <==      Total: 1
+18:36:31 - DEBUG c.c.w.m.m.a.d.E.getSearchKeyByKeyword - ==>  Preparing: select search_key from tb_escape where key_word = ? 
+18:36:31 - DEBUG c.c.w.m.m.a.d.E.getSearchKeyByKeyword - ==> Parameters: 足球(String)
+18:36:31 - DEBUG c.c.w.m.m.a.d.E.getSearchKeyByKeyword - <==      Total: 0
+18:36:31 - DEBUG c.c.w.m.m.a.d.E.maoQueryList - ==>  Preparing: SELECT *,GROUP_CONCAT(id) as ids FROM tb_equipment WHERE state = 'NORMAL' and article_number in ( ? ) GROUP BY article_number order by disp_order ASC LIMIT ?, ?; 
+18:36:31 - DEBUG c.c.w.m.m.a.d.E.maoQueryList - ==> Parameters: C17S201AAZ1(String), 0(Integer), 10(Integer)
+18:36:31 - DEBUG c.c.w.m.m.a.d.E.maoQueryList - <==      Total: 1
+18:36:31 - DEBUG c.c.w.m.m.a.d.P.selectList - ==>  Preparing: SELECT id AS id,equipment_id AS equipmentId,product_id AS productId,property_id AS propertyId,property_name AS propertyName FROM tb_property_relation WHERE (equipment_id = ? AND property_name = ?) 
+18:36:31 - DEBUG c.c.w.m.m.a.d.P.selectList - ==> Parameters: 2(Long), MAINCOLOR(String)
+18:36:31 - DEBUG c.c.w.m.m.a.d.P.selectList - <==      Total: 1
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 180(Long)
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:36:31 - DEBUG c.c.w.m.m.a.d.P.selectByEqptId - ==>  Preparing: SELECT * FROM tb_property_relation WHERE equipment_id = ?; 
+18:36:31 - DEBUG c.c.w.m.m.a.d.P.selectByEqptId - ==> Parameters: 2(Long)
+18:36:31 - DEBUG c.c.w.m.m.a.d.P.selectByEqptId - <==      Total: 9
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 3(Long)
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 36(Long)
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 167(Long)
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 56(Long)
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 108(Long)
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 4(Long)
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 180(Long)
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 112(Long)
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 1(Long)
+18:36:31 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:36:31 - DEBUG c.c.w.m.m.a.d.P.selectList - ==>  Preparing: SELECT equipment_id AS equipmentId,`level`,price,`type` FROM tb_product_price WHERE (equipment_id = ?) 
+18:36:31 - DEBUG c.c.w.m.m.a.d.P.selectList - ==> Parameters: 2(Long)
+18:36:31 - DEBUG c.c.w.m.m.a.d.P.selectList - <==      Total: 6
+18:36:31 - DEBUG c.c.w.m.m.a.d.P.getAllByEquipmentId - ==>  Preparing: select * from tb_player_price where equipment_id = ? 
+18:36:31 - DEBUG c.c.w.m.m.a.d.P.getAllByEquipmentId - ==> Parameters: 2(Long)
+18:36:31 - DEBUG c.c.w.m.m.a.d.P.getAllByEquipmentId - <==      Total: 6
+18:37:11 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - ==>  Preparing: SELECT count(distinct article_number) FROM tb_equipment where article_number = ? and state = 'NORMAL' 
+18:37:11 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - ==> Parameters: C17S201AAZ1(String)
+18:37:11 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - <==      Total: 1
+18:37:11 - DEBUG c.c.w.m.m.a.d.E.getSearchKeyByKeyword - ==>  Preparing: select search_key from tb_escape where key_word = ? 
+18:37:11 - DEBUG c.c.w.m.m.a.d.E.getSearchKeyByKeyword - ==> Parameters: 足球(String)
+18:37:11 - DEBUG c.c.w.m.m.a.d.E.getSearchKeyByKeyword - <==      Total: 0
+18:37:11 - DEBUG c.c.w.m.m.a.d.E.maoQueryList - ==>  Preparing: SELECT *,GROUP_CONCAT(id) as ids FROM tb_equipment WHERE state = 'NORMAL' and article_number in ( ? ) GROUP BY article_number order by disp_order ASC LIMIT ?, ?; 
+18:37:11 - DEBUG c.c.w.m.m.a.d.E.maoQueryList - ==> Parameters: C17S201AAZ1(String), 0(Integer), 10(Integer)
+18:37:11 - DEBUG c.c.w.m.m.a.d.E.maoQueryList - <==      Total: 1
+18:37:11 - DEBUG c.c.w.m.m.a.d.P.selectList - ==>  Preparing: SELECT id AS id,equipment_id AS equipmentId,product_id AS productId,property_id AS propertyId,property_name AS propertyName FROM tb_property_relation WHERE (equipment_id = ? AND property_name = ?) 
+18:37:11 - DEBUG c.c.w.m.m.a.d.P.selectList - ==> Parameters: 2(Long), MAINCOLOR(String)
+18:37:11 - DEBUG c.c.w.m.m.a.d.P.selectList - <==      Total: 1
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 180(Long)
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:37:11 - DEBUG c.c.w.m.m.a.d.P.selectByEqptId - ==>  Preparing: SELECT * FROM tb_property_relation WHERE equipment_id = ?; 
+18:37:11 - DEBUG c.c.w.m.m.a.d.P.selectByEqptId - ==> Parameters: 2(Long)
+18:37:11 - DEBUG c.c.w.m.m.a.d.P.selectByEqptId - <==      Total: 9
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 3(Long)
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 36(Long)
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 167(Long)
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 56(Long)
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 108(Long)
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 4(Long)
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 180(Long)
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 112(Long)
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 1(Long)
+18:37:11 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:37:11 - DEBUG c.c.w.m.m.a.d.P.selectList - ==>  Preparing: SELECT equipment_id AS equipmentId,`level`,price,`type` FROM tb_product_price WHERE (equipment_id = ?) 
+18:37:11 - DEBUG c.c.w.m.m.a.d.P.selectList - ==> Parameters: 2(Long)
+18:37:11 - DEBUG c.c.w.m.m.a.d.P.selectList - <==      Total: 6
+18:37:11 - DEBUG c.c.w.m.m.a.d.P.getAllByEquipmentId - ==>  Preparing: select * from tb_player_price where equipment_id = ? 
+18:37:11 - DEBUG c.c.w.m.m.a.d.P.getAllByEquipmentId - ==> Parameters: 2(Long)
+18:37:11 - DEBUG c.c.w.m.m.a.d.P.getAllByEquipmentId - <==      Total: 6
+18:37:17 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - ==>  Preparing: SELECT count(distinct article_number) FROM tb_equipment where article_number = ? and state = 'NORMAL' 
+18:37:17 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - ==> Parameters: C17S201AAZ1(String)
+18:37:18 - DEBUG c.c.w.m.m.a.d.E.maoQueryListTotal - <==      Total: 1
+18:37:18 - DEBUG c.c.w.m.m.a.d.E.maoQueryList - ==>  Preparing: SELECT *,GROUP_CONCAT(id) as ids FROM tb_equipment WHERE state = 'NORMAL' and article_number in ( ? ) GROUP BY article_number order by disp_order ASC LIMIT ?, ?; 
+18:37:18 - DEBUG c.c.w.m.m.a.d.E.maoQueryList - ==> Parameters: C17S201AAZ1(String), 0(Integer), 10(Integer)
+18:37:18 - DEBUG c.c.w.m.m.a.d.E.maoQueryList - <==      Total: 1
+18:37:18 - DEBUG c.c.w.m.m.a.d.P.selectList - ==>  Preparing: SELECT id AS id,equipment_id AS equipmentId,product_id AS productId,property_id AS propertyId,property_name AS propertyName FROM tb_property_relation WHERE (equipment_id = ? AND property_name = ?) 
+18:37:18 - DEBUG c.c.w.m.m.a.d.P.selectList - ==> Parameters: 2(Long), MAINCOLOR(String)
+18:37:18 - DEBUG c.c.w.m.m.a.d.P.selectList - <==      Total: 1
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 180(Long)
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:37:18 - DEBUG c.c.w.m.m.a.d.P.selectByEqptId - ==>  Preparing: SELECT * FROM tb_property_relation WHERE equipment_id = ?; 
+18:37:18 - DEBUG c.c.w.m.m.a.d.P.selectByEqptId - ==> Parameters: 2(Long)
+18:37:18 - DEBUG c.c.w.m.m.a.d.P.selectByEqptId - <==      Total: 9
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 3(Long)
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 36(Long)
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 167(Long)
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 56(Long)
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 108(Long)
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 4(Long)
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 180(Long)
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 112(Long)
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==>  Preparing: SELECT id AS id,`value`,`desc` FROM tb_property WHERE (id = ?) 
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - ==> Parameters: 1(Long)
+18:37:18 - DEBUG c.c.w.m.m.a.d.PropertyDao.selectList - <==      Total: 1
+18:37:18 - DEBUG c.c.w.m.m.a.d.P.selectList - ==>  Preparing: SELECT equipment_id AS equipmentId,`level`,price,`type` FROM tb_product_price WHERE (equipment_id = ?) 
+18:37:18 - DEBUG c.c.w.m.m.a.d.P.selectList - ==> Parameters: 2(Long)
+18:37:18 - DEBUG c.c.w.m.m.a.d.P.selectList - <==      Total: 6
+18:37:18 - DEBUG c.c.w.m.m.a.d.P.getAllByEquipmentId - ==>  Preparing: select * from tb_player_price where equipment_id = ? 
+18:37:18 - DEBUG c.c.w.m.m.a.d.P.getAllByEquipmentId - ==> Parameters: 2(Long)
+18:37:18 - DEBUG c.c.w.m.m.a.d.P.getAllByEquipmentId - <==      Total: 6
