@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cikers.wechat.mall.modules.app.dao.EquipmentImgDao">
+    <resultMap type="com.cikers.wechat.mall.modules.app.entity.EquipmentImgEntity" id="equipmentImgMap">
+        <result property="id" column="id"/>
+        <result property="equipmentId" column="equipment_id"/>
+        <result property="type" column="type"/>
+        <result property="url" column="url"/>
+    </resultMap>
+    <delete id="truncate" parameterType="java.lang.Integer">
+        TRUNCATE tb_equipment_img;
+    </delete>
+
+</mapper>

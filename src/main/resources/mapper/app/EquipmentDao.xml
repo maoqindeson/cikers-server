@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cikers.wechat.mall.modules.app.dao.EquipmentDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.cikers.wechat.mall.modules.app.entity.EquipmentEntity" id="equipmentMap">
+        <result property="id" column="id"/>
+        <result property="ids" column="ids"/>
+        <result property="articleNumber" column="article_number"/>
+        <result property="imgURL" column="img_url"/>
+        <result property="img_strings" column="img_strings"/>
+        <result property="introduction_strings" column="introduction_strings"/>
+        <result property="price" column="price"/>
+        <result property="descURL" column="desc_url"/>
+        <result property="search_key" column="search_key"/>
+        <result property="state" column="state"/>
+        <result property="freshStartTime" column="fresh_start_time"/>
+        <result property="freshEndTime" column="fresh_end_time"/>
+        <!--<collection property="proudcts" ofType="com.cikers.wechat.mall.modules.app.entity.ProductEntity"-->
+        <!--javaType="ArrayList" column="id"-->
+        <!--select="com.cikers.wechat.mall.modules.app.dao.ProductDao.getProductByEqptId"/>-->
+        <!--<collection property="props"-->
+        <!--javaType="HashMap" column="id"-->
+        <!--select="com.cikers.wechat.mall.modules.app.service.PropertyRelationService.selectByEqptId"/>-->
+    </resultMap>
+
+    <insert id="insert" parameterType="com.cikers.wechat.mall.modules.app.entity.EquipmentEntity">
+        INSERT INTO tb_equipment (id, article_number, price, img_url, desc_url,img_strings,introduction_strings,search_key,disp_order,state,fresh_start_time,fresh_end_time)
+        VALUES (#{id}, #{articleNumber}, #{price}, #{imgURL}, #{descURL},#{img_strings},#{introduction_strings},#{search_key},#{dispOrder},#{state},#{freshStartTime},#{freshEndTime});
+    </insert>
+
+    <delete id="truncate" parameterType="java.lang.Integer">
+        TRUNCATE tb_equipment;
+    </delete>
+
+    <select id="queryList" resultMap="equipmentMap" parameterType="com.cikers.wechat.mall.modules.app.form.ProductForm">
+        SELECT *,GROUP_CONCAT(id) as ids
+        FROM tb_equipment
+        <where>
+             state = 'NORMAL'
+            <if test="articleNumbers!=null and articleNumbers.size()!=0">
+                and  article_number in
+                <foreach collection="articleNumbers" item="item" separator="," open="(" close=")">
+                    '${item}'
+                </foreach>
+            </if>
+            <if test="search_keys!=null and search_keys.size()!=0">
+                and (
+                <foreach collection="search_keys" item="item" separator="or">
+                    `search_key` LIKE '%${item}%'
+                </foreach>
+                )
+            </if>
+        </where>
+        GROUP BY article_number order by disp_order ASC LIMIT #{offset}, #{pageSize};
+    </select>
+    <select id="maoQueryList" resultMap="equipmentMap" parameterType="com.cikers.wechat.mall.modules.app.form.ProductForm">
+        SELECT *,GROUP_CONCAT(id) as ids
+        FROM tb_equipment
+        <where>
+            state = 'NORMAL'
+            <if test="articleNumbers!=null and articleNumbers.size()!=0">
+                and  article_number in
+                <foreach collection="articleNumbers" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="search_keys!=null and search_keys.size()!=0">
+                and
+                <foreach collection="search_keys" item="item"  open="(" separator="or" close=")">
+                    search_key LIKE  %#{item}%
+                </foreach>
+            </if>
+        </where>
+        GROUP BY article_number order by disp_order ASC LIMIT #{offset}, #{pageSize};
+    </select>
+    <select id="queryByPage" resultMap="equipmentMap"
+            parameterType="com.cikers.wechat.mall.modules.app.form.ProductForm">
+        SELECT *,GROUP_CONCAT(id) as ids
+        FROM tb_equipment
+        WHERE  state = 'NORMAL'
+        GROUP BY article_number order by disp_order ASC LIMIT #{offset}, #{pageSize};
+    </select>
+    <!--<select id="queryListTotal" resultType="java.lang.Integer" parameterType="com.cikers.wechat.mall.modules.app.form.ProductForm">-->
+    <!--SELECT count(distinct article_number)-->
+    <!--FROM tb_equipment-->
+    <!--WHERE article_number IN (-->
+    <!--SELECT t.article_number-->
+    <!--FROM (SELECT *-->
+    <!--FROM tb_equipment-->
+    <!--where 1=1-->
+    <!--<if test="articleNumbers!=null and articleNumbers.size!=0">-->
+    <!--and article_number in-->
+    <!--<foreach collection="articleNumbers"  item="item" separator="," open="(" close=")">-->
+    <!--'${item}'-->
+    <!--</foreach>-->
+    <!--</if>-->
+    <!--<if test="search_keys!=null and search_keys.size!=0">-->
+    <!--and (-->
+    <!--<foreach collection="search_keys"  item="item" separator="or">-->
+    <!--`search_key` LIKE '%${item}%'-->
+    <!--</foreach>-->
+    <!--)-->
+    <!--</if>-->
+    <!--GROUP BY article_number-->
+    <!--ORDER BY id ASC) AS t-->
+    <!--);-->
+    <!--</select>-->
+    <select id="queryListTotal" resultType="java.lang.Integer"
+            parameterType="com.cikers.wechat.mall.modules.app.form.ProductForm">
+        SELECT count(distinct article_number)
+        FROM tb_equipment
+        where 1=1
+        <if test="articleNumbers!=null and articleNumbers.size!=0">
+            and article_number in
+            <foreach collection="articleNumbers" item="item" separator="," open="(" close=")">
+                '${item}'
+            </foreach>
+        </if>
+        <if test="search_keys!=null and search_keys.size!=0">
+            and (
+            <foreach collection="search_keys" item="item" separator="or">
+                `search_key` LIKE '%${item}%'
+            </foreach>
+            )
+        </if>
+        and state = 'NORMAL'
+    </select>
+    <select id="maoQueryListTotal" resultType="java.lang.Integer">
+        SELECT count(distinct article_number)
+        FROM tb_equipment
+        where article_number = #{articleNumber} and
+         state = 'NORMAL'
+    </select>
+    <select id="queryById" resultMap="equipmentMap">
+        SELECT *
+        FROM tb_equipment
+        WHERE id=#{id} and state = 'NORMAL'
+    </select>
+    <select id="queryAllById" resultMap="equipmentMap">
+        SELECT *
+        FROM tb_equipment
+        WHERE id=#{id}
+    </select>
+    <select id="queryByarticleNumber" resultMap="equipmentMap">
+        SELECT *
+        FROM tb_equipment
+        WHERE article_number=#{article_number} and state = 'NORMAL'
+        order by disp_order ASC
+    </select>
+    <update id="updateStateByState">
+        update tb_equipment set  state = #{state}
+        where id = #{id}
+    </update>
+</mapper>

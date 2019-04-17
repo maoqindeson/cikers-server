@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cikers.wechat.mall.modules.app.dao.PlayerPriceDao">
+    <resultMap type="com.cikers.wechat.mall.modules.app.entity.PlayerPriceEntity" id="playerPriceMap">
+        <result property="id" column="id"/>
+        <result property="agent_level" column="agent_level"/>
+        <result property="agent_price" column="agent_price"/>
+        <result property="created_date" column="created_date"/>
+        <result property="updated_date" column="updated_date"/>
+    </resultMap>
+    <select id="getByEquipmentIdAndUserLevel" resultMap="playerPriceMap">
+        select *
+        from tb_player_price
+        where equipment_id = #{equipment_id} and agent_level = #{agent_level}
+    </select>
+    <select id="getStandardByEquipmentId" resultMap="playerPriceMap">
+        select *
+        from tb_player_price
+        where equipment_id = #{equipment_id} and agent_level = 'STANDARD'
+    </select>
+    <select id="getAllByEquipmentId" resultMap="playerPriceMap">
+        select *
+        from tb_player_price
+        where equipment_id = #{equipment_id}
+    </select>
+    <delete id="truncate" parameterType="java.lang.Integer">
+       TRUNCATE tb_player_price;
+    </delete>
+</mapper>

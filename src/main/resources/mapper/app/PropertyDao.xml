@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cikers.wechat.mall.modules.app.dao.PropertyDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.cikers.wechat.mall.modules.app.entity.PropertyEntity" id="propertyMap">
+        <result property="id" column="id"/>
+        <result property="value" column="value"/>
+        <result property="desc" column="desc"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.cikers.wechat.mall.modules.app.entity.PropertyEntity">
+        INSERT INTO tb_property (id, value, `desc`) VALUES (#{id}, #{value}, #{desc});
+    </insert>
+
+    <delete id="truncate" parameterType="java.lang.Integer">
+        TRUNCATE  tb_property;
+    </delete>
+
+    <select id="queryTypes" resultMap="propertyMap" parameterType="java.lang.Long">
+        SELECT
+            p.id,
+            p.value,
+            p.`desc`
+        FROM tb_property p
+            LEFT JOIN tb_property_relation r ON r.property_id = p.id
+        WHERE r.property_name = 'TYPE' GROUP BY p.`desc`;
+    </select>
+    <select id="selectByEqptIds" resultMap="propertyMap">
+       select * from tb_property where id in (
+        SELECT distinct (property_id)
+        FROM tb_property_relation
+        WHERE equipment_id in
+        <foreach collection="Ids" item="dramaId" open="(" close=")" separator=",">
+            #{dramaId}
+        </foreach>
+        and property_name ='TYPE' OR property_name ='STYLE' OR property_name ='SERIES' )
+    </select>
+    <select id="getByPropertyId" resultMap="propertyMap" parameterType="java.lang.Long">
+        SELECT
+           *
+        FROM tb_property
+        WHERE id =#{propertyId} ;
+    </select>
+    <!--<select id="selectByProductId" resultMap="propertyMap" parameterType="java.lang.Long">-->
+    <!--SELECT-->
+    <!--p.id,-->
+    <!--p.value,-->
+    <!--p.`desc`-->
+    <!--FROM tb_property p-->
+    <!--LEFT JOIN tb_property_relation r ON r.product_id = #{productId}-->
+    <!--where p.id = r.property_id;-->
+    <!--</select>-->
+</mapper>

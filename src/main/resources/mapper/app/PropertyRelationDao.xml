@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cikers.wechat.mall.modules.app.dao.PropertyRelationDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.cikers.wechat.mall.modules.app.entity.PropertyRelationEntity"
+               id="propertyRelationMap">
+        <result property="id" column="id"/>
+        <result property="equipmentId" column="equipment_id"/>
+        <result property="productId" column="product_id"/>
+        <result property="propertyName" column="property_name"/>
+        <result property="propertyId" column="property_id"/>
+    </resultMap>
+
+    <!--&lt;!&ndash; 可根据自己的需求，是否要使用 &ndash;&gt;-->
+    <!--<resultMap type="java.util.Map"-->
+    <!--id="propertyRelationMap">-->
+    <!--<result property="key" column="property_name"/>-->
+    <!--<association property="value" javaType="com.cikers.wechat.mall.modules.app.entity.PropertyEntity"-->
+    <!--column="property_id" select="com.cikers.wechat.mall.modules.app.dao.PropertyDao.selectById"/>-->
+    <!--</resultMap>-->
+
+
+    <delete id="truncate" parameterType="java.lang.Integer">
+        TRUNCATE tb_property_relation
+    </delete>
+
+    <select id="selectByEqptId" resultMap="propertyRelationMap" parameterType="java.lang.Long">
+        SELECT *
+        FROM tb_property_relation
+        WHERE equipment_id = #{eqptId};
+    </select>
+    <select id="selectByEqptIds" resultMap="propertyRelationMap">
+        SELECT *
+        FROM tb_property_relation
+        WHERE equipment_id in
+        <foreach collection="Ids" item="dramaId" open="(" close=")" separator=",">
+            #{dramaId}
+        </foreach>
+    </select>
+    <select id="selectColorsByEqptIds" resultType="java.lang.String">
+        SELECT `value`  FROM tb_property where id in
+        (SELECT property_id
+        FROM tb_property_relation
+        WHERE equipment_id in
+        <foreach collection="Ids" item="dramaId" open="(" close=")" separator=",">
+            #{dramaId}
+        </foreach>
+        and property_name ='MAINCOLOR')
+    </select>
+    <select id="selectByProductId" resultMap="propertyRelationMap" parameterType="java.lang.Long">
+        SELECT *
+        FROM tb_property_relation
+        WHERE product_id = #{productId};
+    </select>
+</mapper>

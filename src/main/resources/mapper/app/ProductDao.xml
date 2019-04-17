@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cikers.wechat.mall.modules.app.dao.ProductDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.cikers.wechat.mall.modules.app.entity.ProductEntity" id="productMap">
+        <result property="id" column="productId"/>
+        <result property="eqptId" column="eqpt_id"/>
+        <result property="articleNo" column="article_no"/>
+        <result property="dispOrder" column="disp_order"/>
+        <result property="state" column="state"/>
+        <!--<collection property="props"-->
+                    <!--javaType="HashMap" column="productId"-->
+                    <!--select="com.cikers.wechat.mall.modules.app.service.PropertyRelationService.selectByProductId"/>-->
+    </resultMap>
+
+    <insert id="insert" parameterType="com.cikers.wechat.mall.modules.app.entity.ProductEntity">
+        INSERT INTO tb_product (id, eqpt_id, article_no, disp_order,state)
+        VALUES (#{id}, #{eqptId}, #{articleNo}, #{dispOrder}, #{state});
+    </insert>
+
+    <select id="getProductByEqptId" resultMap="productMap" parameterType="java.lang.Long">
+        select
+            id as productId,
+            eqpt_id,
+            article_no,
+            disp_order,
+            state
+        from tb_product
+        where eqpt_id = #{eqptId} and state='NORMAL'
+    </select>
+    <select id="getProductById" resultMap="productMap" parameterType="java.lang.Long">
+        select
+            id as productId,
+            eqpt_id,
+            article_no,
+            disp_order,
+            state
+        from tb_product
+        where id = #{id} and state = 'NORMAL'
+    </select>
+
+    <select id="getAllById" resultMap="productMap" parameterType="java.lang.Long">
+        select
+            id as productId,
+            eqpt_id,
+            article_no,
+            disp_order,
+            state
+        from tb_product
+        where id = #{id}
+    </select>
+    <select id="selectEqpTIdsByProductIds" resultType="java.lang.Long">
+        SELECT DISTINCT(eqpt_id)  FROM tb_product where id in
+        <foreach collection="Ids" item="dramaId" open="(" close=")" separator=",">
+            #{dramaId}
+        </foreach>
+    </select>
+    <delete id="truncate" parameterType="java.lang.Integer">
+        TRUNCATE tb_product;
+    </delete>
+</mapper>
