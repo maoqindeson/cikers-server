@@ -68,12 +68,13 @@ public class AppProductController {
                     newsearch_key.add(newsearchKey);
                 }
             }
+
             if (newsearch_key != null && newsearch_key.isEmpty()) {
                 productForm.setSearch_keys(newsearch_key);
             } else {
                 productForm.setSearch_keys(search_keys);
             }
-
+        }
             List<EquipmentEntity> equipmentEntities = equipmentService.maoQueryList(productForm);
             if (productForm.getArticleNumbers() == null && equipmentEntities != null && !equipmentEntities.isEmpty()) {
                 List<String> arts = screenService.getArticleNumbers();
@@ -88,8 +89,8 @@ public class AppProductController {
             }
             return BaseResp.ok(equipmentEntities);
         }
-        return BaseResp.error("没有加载成功，请重试");
-    }
+
+
 
 
         @PostMapping("/list")
