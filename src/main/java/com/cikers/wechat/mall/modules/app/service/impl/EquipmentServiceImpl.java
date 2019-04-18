@@ -37,7 +37,6 @@ public class EquipmentServiceImpl extends ServiceImpl<EquipmentDao, EquipmentEnt
     private EquipmentService equipmentService;
     @Autowired
     private PropertyService propertyService;
-
     @Override
     public int truncate() {
         return baseMapper.truncate();
@@ -247,6 +246,7 @@ public class EquipmentServiceImpl extends ServiceImpl<EquipmentDao, EquipmentEnt
 
     @Override
     public Integer queryListTotal(ProductForm productForm) {
+
         return baseMapper.queryListTotal(productForm);
     }
 

@@ -1,6 +1,7 @@
 package com.cikers.wechat.mall.modules.app.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.cikers.wechat.mall.modules.app.dao.EquipmentDao;
 import com.cikers.wechat.mall.modules.app.entity.*;
 import com.cikers.wechat.mall.modules.app.form.ProductForm;
 import com.cikers.wechat.mall.modules.app.service.*;
@@ -38,6 +39,7 @@ public class AppProductController {
     @Autowired
     private PlayerPriceService playerPriceService;
 
+
     @PostMapping("/maoQueryList")
     @ResponseBody
     public BaseResp maoQueryList(@RequestBody ProductForm productForm, HttpServletRequest request) {
@@ -51,18 +53,14 @@ public class AppProductController {
         if (offset < 0) {
             return BaseResp.error("页码不正确，必须大于0的整数");
         }
-        if(productForm.getArticleNumbers()!=null&&!productForm.getArticleNumbers().isEmpty()) {
-            List<String> articleNumbers = productForm.getArticleNumbers();
-            for (String articleNumber : articleNumbers) {
-                Integer total = equipmentService.maoQueryListTotal(articleNumber);
-                if (offset > total) {
-                    return BaseResp.error("超出列表范围");
-                }
-            }
+        //之前用的是对象属性入参，这样要每个都要校验，这里换成对象入参
+        Integer total = equipmentService.queryListTotal(productForm);
+        if (offset > total) {
+            return BaseResp.error("超出列表范围");
         }
         productForm.setOffset(offset);
         if (productForm.getKeyword() != null) {
-            List<String> search_keys = Arrays.asList(productForm.getKeyword().split(","));
+            List<String> search_keys = Arrays.asList(productForm.getKeyword().split(" "));
             List<String> newsearch_key = new ArrayList<>();
             for (String search_key : search_keys) {
                 String newsearchKey = escapeService.getSearchKeyByKeyword(search_key);
@@ -70,7 +68,7 @@ public class AppProductController {
                     newsearch_key.add(newsearchKey);
                 }
             }
-            if (newsearch_key != null && newsearch_key.isEmpty()) {
+            if (newsearch_key != null &&! newsearch_key.isEmpty()) {
                 productForm.setSearch_keys(newsearch_key);
             } else {
                 productForm.setSearch_keys(search_keys);
@@ -79,7 +77,7 @@ public class AppProductController {
             List<EquipmentEntity> equipmentEntities = equipmentService.maoQueryList(productForm);
             if (productForm.getArticleNumbers() == null && equipmentEntities != null && !equipmentEntities.isEmpty()) {
                 List<String> arts = screenService.getArticleNumbers();
-                if (arts != null && arts.isEmpty()) {
+                if (arts != null && !arts.isEmpty()) {
                     Iterator<EquipmentEntity> iterator = equipmentEntities.iterator();
                     while (iterator.hasNext()) {
                         if (arts.contains(iterator.next().getArticleNumber())) {
