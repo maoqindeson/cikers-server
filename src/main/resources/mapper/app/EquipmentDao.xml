@@ -69,7 +69,7 @@
             <if test="search_keys!=null and search_keys.size()!=0">
                 and
                 <foreach collection="search_keys" item="item"  open="(" separator="or" close=")">
-                    search_key LIKE  %#{item}%
+                    search_key LIKE "%"#{item}"%"
                 </foreach>
             </if>
         </where>
@@ -121,7 +121,7 @@
         <if test="search_keys!=null and search_keys.size!=0">
             and (
             <foreach collection="search_keys" item="item" separator="or">
-                `search_key` LIKE '%${item}%'
+                search_key LIKE '%${item}%'
             </foreach>
             )
         </if>
