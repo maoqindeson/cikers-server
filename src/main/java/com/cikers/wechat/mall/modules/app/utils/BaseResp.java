@@ -2,6 +2,8 @@ package com.cikers.wechat.mall.modules.app.utils;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * 返回数据
  *
@@ -10,7 +12,7 @@ import lombok.Data;
  * @date 2016年10月27日 下午9:59:27
  */
 @Data
-public class BaseResp {
+public class BaseResp implements Serializable {
     private int e;
     private String msg;
     private Object data;

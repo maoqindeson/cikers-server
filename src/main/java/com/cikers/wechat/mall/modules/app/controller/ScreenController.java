@@ -2,18 +2,22 @@ package com.cikers.wechat.mall.modules.app.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.cikers.wechat.mall.modules.app.entity.ScreenEntity;
+import com.cikers.wechat.mall.modules.app.entity.UserEntity;
 import com.cikers.wechat.mall.modules.app.form.ProductForm;
 import com.cikers.wechat.mall.modules.app.service.ScreenService;
 import com.cikers.wechat.mall.modules.app.utils.BaseResp;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @RestController
@@ -21,6 +25,10 @@ import java.util.List;
 public class ScreenController {
     @Autowired
     private ScreenService screenService;
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
+    @Autowired
+    private RedisTemplate<String, Object> redisTemplate;
 
     @PostMapping("/getAllScreen")
     public BaseResp getAllScreen() {
@@ -51,5 +59,28 @@ public class ScreenController {
             return BaseResp.error("插入失败");
         }
         return BaseResp.ok(b);
+    }
+
+    @PostMapping("/testRedis")
+    public BaseResp testRedis() {
+        //set name leo
+        redisTemplate.opsForValue().set("names", "leo");
+        UserEntity userEntity = new UserEntity();
+        userEntity.setNickName("leomao");
+        redisTemplate.opsForValue().set("User", userEntity);
+        List<String> list1 = new ArrayList<String>();
+        list1.add("a1");
+        list1.add("a2");
+        list1.add("a3");
+        redisTemplate.opsForList().leftPush("listkey1", list1);
+        stringRedisTemplate.opsForValue().set("string", "char");
+        return BaseResp.ok("sucess");
+    }
+
+    @PostMapping("/getRedis")
+    public BaseResp getRedis(String key) {
+        Object ob = redisTemplate.boundValueOps(key).get();
+//        Object object = redisTemplate.opsForList().leftPop(key);            //list的取值
+        return BaseResp.ok(ob);
     }
 }

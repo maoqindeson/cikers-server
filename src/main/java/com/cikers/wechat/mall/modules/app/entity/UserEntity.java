@@ -11,6 +11,7 @@ import java.util.Date;
 @Data
 @TableName("tb_user")
 public class UserEntity extends BaseEntity implements Serializable {
+    private static final long serialVersionUID = 3221700752972709820L;
     private String username;
     private String openId;
     private String unionId;
